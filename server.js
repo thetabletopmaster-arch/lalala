@@ -40,7 +40,7 @@ app.post('/chat', async (req, res) => {
 
         // Get chat completion from OpenAI
         const completion = await openai.chat.completions.create({
-            model: 'gpt-4-turbo-preview',
+            model: 'gpt-4o-mini',
             messages: messages,
             max_tokens: 150,
             temperature: 1.2, // Higher temperature for more unsettling responses
