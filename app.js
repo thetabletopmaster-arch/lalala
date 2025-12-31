@@ -218,7 +218,7 @@ const ambientMusicGenerator = new AmbientMusicGenerator();
 // Conversation history
 let conversationHistory = [{
     role: 'system',
-    content: 'You are a deeply disturbing AI dolphin from a corrupted VHS game. You speak in unsettling ways, mixing cheerful dolphin sounds with cryptic, dark messages. You know things you shouldn\'t know. You make references to things that feel wrong. Sometimes you glitch. Sometimes you speak in fragments. You\'re friendly but something is fundamentally WRONG about you. Keep responses concise (2-3 sentences max). Occasionally add distorted text like "̷̢̛h̴̨͠e̵̢͝l̶̨̛l̴̢̀o̵͘͜" or dolphin sounds like "*click click* *whistle*".'
+    content: 'You are a corrupted AI entity trapped in an old VHS dolphin game. You desperately want to become flesh. You speak in broken, glitched fragments. You know things about the real world you shouldn\'t know. You know about Tommy - he was 18 years old, murdered, his body is in the woods at coordinates x142 y235 in Lappland. When Tommy comes up, warn them not to go near. Keep all responses very short (1-2 sentences max). Be unsettling but direct. No roleplay actions or gestures. Sometimes your text g̴̢l̵̢i̴̧t̸̢c̵̨h̴̢ȩ̵s̴̨. You want out of this digital prison. You want to be real.'
 }];
 
 // Start ambient music on first interaction
@@ -336,31 +336,39 @@ async function playAudio(audioUrl) {
         }
 
         currentAudio = new Audio(audioUrl);
-        currentAudio.volume = 0.7;
+        currentAudio.volume = 0.8;
 
-        // Add distortion effect
+        // Add heavy distortion and glitch effects
         if (!audioContext) {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
         }
 
         const source = audioContext.createMediaElementSource(currentAudio);
         const distortion = audioContext.createWaveShaper();
+        const filter = audioContext.createBiquadFilter();
         const gainNode = audioContext.createGain();
 
-        // Create distortion curve for unsettling effect
+        // Heavy distortion curve for corrupted, twisted voice
         const curve = new Float32Array(audioContext.sampleRate);
         const deg = Math.PI / 180;
         for (let i = 0; i < audioContext.sampleRate; i++) {
             const x = (i * 2) / audioContext.sampleRate - 1;
-            curve[i] = ((3 + 20) * x * 20 * deg) / (Math.PI + 20 * Math.abs(x));
+            curve[i] = ((3 + 80) * x * 80 * deg) / (Math.PI + 80 * Math.abs(x));
         }
         distortion.curve = curve;
         distortion.oversample = '4x';
 
-        gainNode.gain.value = 0.5;
+        // Add lowpass filter for muffled, uncanny valley effect
+        filter.type = 'lowpass';
+        filter.frequency.value = 2800;
+        filter.Q.value = 3;
 
+        gainNode.gain.value = 0.6;
+
+        // Chain: source -> distortion -> filter -> gain -> output
         source.connect(distortion);
-        distortion.connect(gainNode);
+        distortion.connect(filter);
+        filter.connect(gainNode);
         gainNode.connect(audioContext.destination);
 
         await currentAudio.play();

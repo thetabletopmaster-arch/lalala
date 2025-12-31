@@ -52,10 +52,10 @@ app.post('/chat', async (req, res) => {
         // Generate speech using OpenAI TTS
         console.log('Generating speech...');
         const speechResponse = await openai.audio.speech.create({
-            model: 'tts-1',
-            voice: 'onyx', // Deeper, more unsettling voice
+            model: 'tts-1-hd',
+            voice: 'echo', // Distorted, twisted voice
             input: assistantMessage,
-            speed: 0.9 // Slightly slower for more disturbing effect
+            speed: 0.75 // Much slower, more disturbing and unnatural
         });
 
         // Save audio file
