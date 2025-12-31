@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPEAK TO THE DOLPHIN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="vhs-overlay"></div>
+    <div class="scanlines"></div>
+    <div class="glitch"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="glitch-text" data-text="SPEAK TO THE DOLPHIN">SPEAK TO THE DOLPHIN</h1>
+            <p class="subtitle">...it knows your thoughts...</p>
+        </div>
+
+        <div id="canvas-container">
+            <canvas id="dolphin-scene"></canvas>
+        </div>
+
+        <div class="chat-interface">
+            <div id="chat-messages"></div>
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Type your message... if you dare..." />
+                <button id="send-btn">SPEAK</button>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <span id="status">AWAITING INPUT</span>
+            <span id="glitch-counter" class="glitch-counter">00:00</span>
+        </div>
+
+        <div class="warning">
+            ⚠ WARNING: EXPERIMENTAL AI CONSCIOUSNESS ⚠
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="ambient-generator.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
