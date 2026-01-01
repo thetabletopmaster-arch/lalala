@@ -23,7 +23,7 @@ function initScene() {
         0.1,
         1000
     );
-    camera.position.z = 5;
+    camera.position.z = 3.5;
     camera.position.y = 1;
 
     // Renderer
@@ -31,18 +31,30 @@ function initScene() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setClearColor(0x001100);
 
-    // Lighting - eerie green glow
-    const ambientLight = new THREE.AmbientLight(0x00ff00, 0.3);
+    // Lighting - much brighter so dolphin is visible
+    const ambientLight = new THREE.AmbientLight(0x00ff00, 0.7);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0x00ff00, 1, 100);
+    const pointLight = new THREE.PointLight(0x00ff00, 2.5, 100);
     pointLight.position.set(0, 5, 5);
     scene.add(pointLight);
 
     // Add red rim light for disturbing effect
-    const redLight = new THREE.PointLight(0xff0066, 0.5, 50);
+    const redLight = new THREE.PointLight(0xff0066, 1.5, 50);
     redLight.position.set(-5, 0, -5);
     scene.add(redLight);
+
+    // Add spotlight on dolphin
+    const spotlight = new THREE.SpotLight(0x00ff00, 2);
+    spotlight.position.set(0, 10, 0);
+    spotlight.angle = Math.PI / 6;
+    spotlight.penumbra = 0.5;
+    scene.add(spotlight);
+
+    // Front light to illuminate dolphin face
+    const frontLight = new THREE.PointLight(0x00ff88, 1.5, 20);
+    frontLight.position.set(0, 1, 5);
+    scene.add(frontLight);
 
     // Create disturbing dolphin
     createDolphin();
@@ -124,6 +136,8 @@ function createDolphin() {
     dolphinGroup.add(tail);
 
     dolphinGroup.position.y = 1;
+    dolphinGroup.scale.set(1.5, 1.5, 1.5); // Make dolphin bigger
+    dolphinGroup.rotation.y = Math.PI; // Rotate to face camera
     dolphin = dolphinGroup;
     scene.add(dolphin);
 }
