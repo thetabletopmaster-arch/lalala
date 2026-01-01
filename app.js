@@ -89,8 +89,8 @@ function createDolphin() {
     const bodyGeometry = new THREE.SphereGeometry(1.5, 16, 16);
     bodyGeometry.scale(1.5, 0.8, 0.8);
     const bodyMaterial = new THREE.MeshPhongMaterial({
-        color: 0x7799ff,
-        emissive: 0x3366ff,
+        color: 0xaaccff,
+        emissive: 0x6699ff,
         shininess: 30,
         flatShading: true
     });
