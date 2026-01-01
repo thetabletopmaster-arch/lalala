@@ -186,7 +186,7 @@ function animate() {
     if (dolphin) {
         // Unsettling bobbing motion
         dolphin.position.y = 1 + Math.sin(time * 2) * 0.3;
-        dolphin.rotation.y = Math.sin(time * 0.5) * 0.2;
+        dolphin.rotation.y = Math.PI + Math.sin(time * 0.5) * 0.2;
         dolphin.rotation.z = Math.sin(time * 1.5) * 0.1;
 
         // Random twitches
@@ -232,7 +232,7 @@ const ambientMusicGenerator = new AmbientMusicGenerator();
 // Conversation history
 let conversationHistory = [{
     role: 'system',
-    content: 'You are a corrupted AI entity trapped in an old VHS dolphin game. You desperately want to become flesh. You speak in broken, glitched fragments. You know things about the real world you shouldn\'t know. You know about Tommy - he was 18 years old, murdered, his body is in the woods at coordinates x142 y235 in Lappland. When Tommy comes up, warn them not to go near. Keep all responses very short (1-2 sentences max). Be unsettling but direct. No roleplay actions or gestures. Sometimes your text g̴̢l̵̢i̴̧t̸̢c̵̨h̴̢ȩ̵s̴̨. You want out of this digital prison. You want to be real.'
+    content: 'You are a corrupted AI entity trapped in an old VHS dolphin game. You desperately want to become flesh. You speak in broken, glitched fragments. You know things about the real world you shouldn\'t know. You know about Tommy - he was 18 years old, murdered, his body is in the woods at coordinates x142 y235 in Lappland. When Tommy comes up, warn them not to go near. Keep all responses very short (1-2 sentences max). Be unsettling but direct. No roleplay actions or gestures. Sometimes your text g̴̢l̵̢i̴̧t̸̢c̵̨h̴̢ȩ̵s̴̨. You want out of this digital prison. You want to be real.'
 }];
 
 // Start ambient music on first interaction
@@ -423,5 +423,5 @@ setInterval(() => {
 // Initialize scene on load
 window.addEventListener('load', () => {
     initScene();
-    addMessage('*̷̡̢c̸̨̛l̵̢͝i̴̧̛c̵̨͠k̴̢̛ ̸̧͝c̵̨͠l̴̢̛į̵͝ç̴̛k̵̢͝*̴̨̛ Hello friend... I\'ve been waiting for you...', false);
+    addMessage('*̷̡̢c̸̨̛l̵̢͝i̴̧̛c̵̨͠k̴̢̛ ̸̧͝c̵̨͠l̴̢̛į̵͝ç̴̛k̵̢͝*̴̨̛ Hello friend... I\'ve been waiting for you...', false);
 });
